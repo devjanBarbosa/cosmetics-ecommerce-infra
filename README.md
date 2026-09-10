@@ -38,5 +38,9 @@ The code is organized to maintain a clean separation of concerns:
 2. **Initialize Terraform:**
    ```bash
    terraform init
+   terraform plan
+   terraform apply
+ 
+ ## 📐 Architecture Diagram
 
 ![AWS Architecture Diagram](./docs/ArchitectureAWS.png)
