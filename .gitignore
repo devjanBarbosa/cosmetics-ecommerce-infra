@@ -1,0 +1,14 @@
+# Diretórios ocultos do Terraform (binários baixados)
+**/.terraform/*
+
+# Arquivos de estado (contêm dados sensíveis da sua conta AWS)
+*.tfstate
+*.tfstate.*
+
+# Logs de erro
+crash.log
+crash.*.log
+
+# Arquivos de variáveis com valores reais/sensíveis
+*.tfvars
+*.tfvars.json
