@@ -38,5 +38,3 @@ The code is organized to maintain a clean separation of concerns:
 2. **Initialize Terraform:**
    ```bash
    terraform init
-
-   <img width="1627" height="562" alt="Diagrama sem nome drawio (3)" src="https://github.com/user-attachments/assets/a3759aaf-0796-41ba-bb54-ed02b4884aed" />
