@@ -12,3 +12,6 @@ crash.*.log
 # Arquivos de variáveis com valores reais/sensíveis
 *.tfvars
 *.tfvars.json
+
+.terraform/
+.terraform.lock.hcl
