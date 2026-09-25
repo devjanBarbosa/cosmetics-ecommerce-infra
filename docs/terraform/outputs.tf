@@ -24,3 +24,22 @@ output "SecurityGroupBD" {
 }
 
 
+output "app_server_id" {
+  description = "ID da instancia EC2"
+  value       = aws_instance.app_server.id
+}
+
+output "app_server_public_ip" {
+  description = "IP publico da instancia EC2 (use para conexao SSH e web)"
+  value       = aws_instance.app_server.public_ip
+}
+
+output "app_server_private_ip" {
+  description = "IP privado da instancia na VPC"
+  value       = aws_instance.app_server.private_ip
+}
+
+output "ssh_connection_command" {
+  description = "Comando pronto para conectar via SSH"
+  value       = "ssh -i ~/.ssh/staging_key ubuntu@${aws_instance.app_server.public_ip}"
+}
