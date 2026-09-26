@@ -23,25 +23,24 @@ output "SecurityGroupBD" {
   value       = aws_security_group.staging_bd_sg.id
 }
 
-
-output "app_server_id" {
-  description = "ID da instancia EC2"
-  value       = aws_instance.app_server.id
-}
-
-output "app_server_public_ip" {
-  description = "IP publico da instancia EC2 (use para conexao SSH e web)"
-  value       = aws_instance.app_server.public_ip
-}
-
-output "app_server_private_ip" {
-  description = "IP privado da instancia na VPC"
-  value       = aws_instance.app_server.private_ip
-}
-
 output "ssh_connection_command" {
   description = "Comando pronto para conectar via SSH"
-  value       = "ssh -i ~/.ssh/staging_key ubuntu@${aws_instance.app_server.public_ip}"
+  value       = "ssh -i ~/.ssh/staging_key ec2-user@${aws_instance.ecs_instance.public_ip}"
+}
+
+output "ecs_instance_id" {
+  description = "ID da instancia EC2 do cluster ECS"
+  value       = aws_instance.ecs_instance.id
+}
+
+output "ecs_instance_public_ip" {
+  description = "IP publico da EC2 do cluster ECS"
+  value       = aws_instance.ecs_instance.public_ip
+}
+
+output "ecs_instance_private_ip" {
+  description = "IP privado da EC2 do cluster ECS"
+  value       = aws_instance.ecs_instance.private_ip
 }
 
 output "rds_endpoint" {
