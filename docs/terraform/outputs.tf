@@ -43,3 +43,8 @@ output "ssh_connection_command" {
   description = "Comando pronto para conectar via SSH"
   value       = "ssh -i ~/.ssh/staging_key ubuntu@${aws_instance.app_server.public_ip}"
 }
+
+output "rds_endpoint" {
+  description = "Endpoint de conexao com o banco de dados RDS"
+  value       = aws_db_instance.staging_postgres.endpoint
+}
