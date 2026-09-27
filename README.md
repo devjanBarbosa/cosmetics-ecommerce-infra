@@ -43,4 +43,4 @@ The code is organized to maintain a clean separation of concerns:
  
  ## 📐 Architecture Diagram
 
-![AWS Architecture Diagram](./docs/ArchitectureAWS.png)
+![AWS Architecture Diagram](./docs/ArquiteturaAWS.png)
