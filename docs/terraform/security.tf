@@ -30,9 +30,9 @@ resource "aws_vpc_security_group_ingress_rule" "app_http_ingress" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "app_ssh_ingress" {
-  security_group_id = aws_security_group.staging_bd_sg.id
+  security_group_id = aws_security_group.staging_app_sg.id
 
-  cidr_ipv4   = "0.0.0.0/0"
+  cidr_ipv4   = "191.199.247.57/32"
   from_port   = 22
   ip_protocol = "tcp"
   to_port     = 22

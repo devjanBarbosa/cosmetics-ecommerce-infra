@@ -23,16 +23,16 @@ resource "aws_key_pair" "staging_key" {
   public_key = file("~/.ssh/staging_key.pub")
 }
 
-resource "aws_instance" "app_server" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-  subnet_id     = aws_subnet.subnet_az1.id
-  key_name      = aws_key_pair.staging_key.key_name
+## resource "aws_instance" "app_server" {
+#  ami           = data.aws_ami.ubuntu.id
+#  instance_type = "t2.micro"
+#  subnet_id     = aws_subnet.subnet_az1.id
+#  key_name      = aws_key_pair.staging_key.key_name
 
-  vpc_security_group_ids      = [aws_security_group.staging_app_sg.id]
-  associate_public_ip_address = true
-  tags = {
-    Name        = "staging_app_server"
-    Environment = "staging"
-  }
-}
+#  vpc_security_group_ids      = [aws_security_group.staging_app_sg.id]
+#  associate_public_ip_address = true
+#  tags = {
+#    Name        = "staging_app_server"
+#    Environment = "staging"
+##  }
+##}

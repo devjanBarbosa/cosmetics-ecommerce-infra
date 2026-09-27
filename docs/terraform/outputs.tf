@@ -47,3 +47,13 @@ output "rds_endpoint" {
   description = "Endpoint de conexao com o banco de dados RDS"
   value       = aws_db_instance.staging_postgres.endpoint
 }
+
+output "cloudfront_domain_name" {
+  description = "URL publica da CDN para acessar o frontend"
+  value       = aws_cloudfront_distribution.frontend_distribution.domain_name
+}
+
+output "frontend_s3_bucket_name" {
+  description = "Nome do bucket S3 onde faremos o upload dos arquivos do Angular"
+  value       = aws_s3_bucket.frontend_bucket.bucket
+}

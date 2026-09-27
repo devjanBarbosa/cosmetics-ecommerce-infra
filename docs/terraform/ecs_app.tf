@@ -39,18 +39,18 @@ resource "aws_ecs_task_definition" "app" {
   requires_compatibilities = ["EC2"]
   network_mode             = "bridge"
   cpu                      = "512"
-  memory                   = "512"
+  memory                   = "768"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
 
   container_definitions = jsonencode([
     {
       name      = "ecommerce-api"
-      image     = "nginx:alpine" 
+      image     = "janbarbosa/cosmetics-api:v1"
       essential = true
       portMappings = [
         {
           hostPort      = 80
-          containerPort = 80
+          containerPort = 8080
           protocol      = "tcp"
         }
       ]
@@ -65,7 +65,7 @@ resource "aws_ecs_task_definition" "app" {
       environment = [
         {
           name  = "SPRING_DATASOURCE_URL"
-          value = "jdbc:postgresql://${aws_db_instance.staging_postgres.endpoint}/${var.db_username}"
+          value = "jdbc:postgresql://${aws_db_instance.staging_postgres.endpoint}/${var.db_name}"
         },
         {
           name  = "SPRING_DATASOURCE_USERNAME"
@@ -86,6 +86,15 @@ resource "aws_ecs_service" "app_service" {
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = 1
   launch_type     = "EC2"
+
+  deployment_minimum_healthy_percent = 0
+  deployment_maximum_percent         = 100
+
+  availability_zone_rebalancing = "DISABLED"
+
+  triggers = {
+    redeployment = aws_ecs_task_definition.app.arn
+  }
 
   depends_on = [aws_instance.ecs_instance]
 }
