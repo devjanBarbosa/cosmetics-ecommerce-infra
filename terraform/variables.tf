@@ -21,3 +21,8 @@ variable "db_name" {
   type        = string
   default     = "appdb"
 }
+
+variable "my_ip" {
+  description = "IP público atual para acesso SSH"
+  type        = string
+}

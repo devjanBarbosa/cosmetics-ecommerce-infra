@@ -21,14 +21,16 @@ resource "aws_db_instance" "staging_postgres" {
   engine_version        = "15"
   instance_class        = "db.t3.micro"
 
-  db_name  = "appdb"
+  db_name  = "stagingdb"
   username = var.db_username
   password = var.db_password
+
 
   db_subnet_group_name   = aws_db_subnet_group.staging_db_subnet_group.name
   vpc_security_group_ids = [aws_security_group.staging_bd_sg.id]
   publicly_accessible    = false
 
+  storage_encrypted   = true
   skip_final_snapshot = true
   multi_az            = false
   deletion_protection = false
